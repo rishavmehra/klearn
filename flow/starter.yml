@@ -1,0 +1,48 @@
+id: getting_started
+namespace: company.team
+
+description: |
+  # Getting Started
+  Let's `write` some **markdown** - [first flow](https://rishavmehra.vercel.app/) 🚀
+
+labels:
+  owner: rishavmehra
+  project: never-gonna-give-you-up
+
+tasks:
+  - id: go
+    type: io.kestra.plugin.scripts.shell.Commands
+    taskRunner:
+      type: io.kestra.plugin.scripts.runner.docker.Docker
+    containerImage: golang:latest
+    inputFiles:
+      main.go: |
+        package main
+        import "fmt"
+        func main() {
+            fmt.Println("hello world")
+        }
+    commands:
+      - go run main.go
+      - git clone https://github.com/rishavmehra/bittorrent-v2
+      - ls bittorrent-v2
+      - cd bittorrent-v2
+      - pwd
+      
+  # - id: gitCLone
+  #   type: io.kestra.plugin.scripts.shell.Commands
+    
+    # taskRunner:
+    #   type: 
+    #     - io.kestra.plugin.git.Clone
+    #     - io.kestra.plugin.scripts.runner.docker.Docker
+    # containerImage: golang:latest
+    # description: "bittorrent "
+    # branch: master
+    # url: https://github.com/rishavmehra/bittorrent-v2
+    
+  - id: go-version
+    type: io.kestra.plugin.scripts.shell.Commands
+    commands:
+      - ls 
+      - pwd
